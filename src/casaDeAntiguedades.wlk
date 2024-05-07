@@ -1,6 +1,5 @@
 object casaDeAntiguedades {
-	const artefactosYElementosAntiguos = []
-	var estaEnMalEstado = true
+	const artefactosYElementosAntiguos = #{}
 	
 	method artefactosYElementosAntiguos() = artefactosYElementosAntiguos
 	
@@ -12,30 +11,23 @@ object casaDeAntiguedades {
 	}
 	method tieneAlgunaAntiguedadStock() = ! self.artefactosYElementosAntiguos().isEmpty()
 	method cantidadDeArtefactos() = artefactosYElementosAntiguos.size()
-	method ultimoArtefactoAdquirido() = artefactosYElementosAntiguos.last()
+	method ultimoArtefactoAdquirido() = artefactosYElementosAntiguos.asList().last()
 	method anosDeAntiguedad(cantidad) = cantidad
 	method esMuyAntigua(artefactoAntiguo){
 		return artefactoAntiguo.anosDeAntiguedad() > 100
-	}
-	method restaurar(){
-		estaEnMalEstado = false
 	}
 	method anosDeAntiguedadDelArtefacto(artefactoAntiguo, numero) =
 		artefactoAntiguo.anosDeAntiguedad(numero)
 	
 	method restaurarElPrimerElemento(){
-		artefactosYElementosAntiguos.first().restaurar()
+		artefactosYElementosAntiguos.asList().first().restaurar()
 	}
 	method restaurarElUltimoElemento(){
-		artefactosYElementosAntiguos.last().restaurar()
+		artefactosYElementosAntiguos.asList().last().restaurar()
 	}
 	method restaurarEnPosicion(numero){
-		artefactosYElementosAntiguos.get(numero).restaurar()
+		artefactosYElementosAntiguos.asList().get(numero).restaurar()
 	}
-	method estaEnMalEstado() = estaEnMalEstado
-	method cambioDeEstado(){
-	 estaEnMalEstado = ! estaEnMalEstado
-	}	
 	method antiguedadEnMalEstado(artefactoAntiguo){
 		if (artefactoAntiguo.estaEnMalEstado()){
 			artefactoAntiguo.restaurar()
@@ -44,4 +36,36 @@ object casaDeAntiguedades {
 	method venderTodasLasAntiguedades(){
 		artefactosYElementosAntiguos.clear()
 	}
+}
+
+object antiguedad1 {
+	var estaEnMalEstado = true
+	method restaurar(){ 
+		estaEnMalEstado = false
+	}
+	method estaEnMalEstado() = estaEnMalEstado 
+}
+
+object antiguedad2 {
+	var estaEnMalEstado = true
+	method restaurar(){ 
+		estaEnMalEstado = false
+	}
+	method estaEnMalEstado() = estaEnMalEstado 
+}
+
+object antiguedad3 {
+	var estaEnMalEstado = true
+	method restaurar(){ 
+		estaEnMalEstado = false
+	}
+	method estaEnMalEstado() = estaEnMalEstado 
+}
+
+object antiguedad4 {
+	var estaEnMalEstado = true
+	method restaurar(){ 
+		estaEnMalEstado = false
+	}
+	method estaEnMalEstado() = estaEnMalEstado 
 }
